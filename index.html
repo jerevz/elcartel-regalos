@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>El Cartel | Regalos Empresarios de Alto Impacto</title>
+  <!-- Google Fonts + Font Awesome (liviano) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #0a0a0a;
+      color: #e5e5e5;
+      scroll-behavior: smooth;
+      transition: background-color 0.3s, color 0.2s;
+    }
+
+    /* modo claro/oscuro manual – por defecto oscuro premium */
+    body.light-mode {
+      background-color: #f5f3f0;
+      color: #1e1e1e;
+    }
+
+    body.light-mode .navbar,
+    body.light-mode footer {
+      background-color: #ffffff;
+      border-bottom: 1px solid #e0d6cc;
+    }
+
+    body.light-mode .service-card,
+    body.light-mode .testimonial-card {
+      background: #ffffff;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    }
+
+    body.light-mode .product-card {
+      background: #fefcf8;
+    }
+
+    /* contenedor general */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* NAVBAR FIJO */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+      transition: 0.2s;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #D4AF37;
+      transition: transform 0.2s;
+    }
+
+    .logo-img:hover {
+      transform: scale(1.05);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #D4AF37, #F5E7A3);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #ececec;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: 0.2s;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links a:hover {
+      color: #D4AF37;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid #D4AF37;
+      border-radius: 40px;
+      padding: 6px 12px;
+      cursor: pointer;
+      color: #D4AF37;
+      font-size: 1.1rem;
+      transition: 0.2s;
+    }
+
+    /* HERO - con la imagen de fondo de Instagram */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(0,0,0,0.7)), url('https://instagram.fmdq3-1.fna.fbcdn.net/v/t51.2885-19/272833501_4922373631172428_7866195570883131568_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xNTAuYzIifQ&_nc_ht=instagram.fmdq3-1.fna.fbcdn.net&_nc_cat=104&_nc_oc=Q6cZ2gEze1d11l8iPcZAwPfi7-CcNRGAA_7nJwJNOr_1tE25RJg3SYPXogq--UakKoC5k_1hcFP-02tJjyiD1R4mJglp&_nc_ohc=VAT1Qwf6l9sQ7kNvwFgSInE&_nc_gid=1v4p8JVumDDDay_35RBg2g&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_AfxeWaH6E5uXtp_I2XIpXb7jsSUysQoDhzPm8r6VL_QaSQ&oe=69CC52D7&_nc_sid=7a9f4b') center/cover no-repeat;
+      background-blend-mode: overlay;
+      margin-top: 0;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 700px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.8rem;
+      font-weight: 700;
+      line-height: 1.2;
+      background: linear-gradient(to right, #FFFFFF, #D4AF37);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: #cdcdcd;
+      border-left: 3px solid #D4AF37;
+      padding-left: 20px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: #D4AF37;
+      color: #0a0a0a;
+      padding: 14px 32px;
+      font-weight: 700;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.25s;
+      text-decoration: none;
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .btn-primary:hover {
+      background: #c2a12e;
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #D4AF37;
+      color: #D4AF37;
+      padding: 14px 32px;
+      font-weight: 600;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.25s;
+      text-decoration: none;
+    }
+
+    .btn-outline:hover {
+      background: #D4AF37;
+      color: #0a0a0a;
+    }
+
+    /* secciones generales */
+    section {
+      padding: 100px 0;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .section-title span {
+      background: linear-gradient(135deg, #D4AF37, #f3e5ab);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .section-sub {
+      text-align: center;
+      margin-bottom: 60px;
+      color: #aaa;
+    }
+
+    /* grid productos */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 35px;
+      margin-top: 20px;
+    }
+
+    .product-card {
+      background: #111111;
+      border-radius: 24px;
+      overflow: hidden;
+      transition: all 0.35s ease;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      border-color: #D4AF37;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.6);
+    }
+
+    .product-img {
+      height: 260px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding: 12px;
+    }
+
+    .overlay-icon {
+      background: rgba(0,0,0,0.7);
+      border-radius: 40px;
+      padding: 8px 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #D4AF37;
+      border: 1px solid #D4AF37;
+      backdrop-filter: blur(4px);
+      transition: 0.2s;
+    }
+
+    .product-card h3 {
+      padding: 20px 20px 5px;
+      font-size: 1.3rem;
+    }
+
+    .product-card p {
+      padding: 0 20px 20px;
+      color: #b9b9b9;
+      font-size: 0.85rem;
+    }
+
+    /* servicios grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background: #111;
+      padding: 35px 20px;
+      text-align: center;
+      border-radius: 24px;
+      transition: 0.25s;
+      border-bottom: 2px solid #D4AF37;
+    }
+
+    .service-card i {
+      font-size: 2.8rem;
+      color: #D4AF37;
+      margin-bottom: 20px;
+    }
+
+    .service-card h4 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+
+    /* testimonios carrusel manual con scroll horizontal elegante */
+    .testimonials-wrapper {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      display: flex;
+      gap: 28px;
+      padding-bottom: 20px;
+      scrollbar-width: thin;
+    }
+
+    .testimonials-wrapper::-webkit-scrollbar {
+      height: 5px;
+    }
+
+    .testimonial-card {
+      min-width: 320px;
+      background: #111;
+      border-radius: 28px;
+      padding: 32px;
+      scroll-snap-align: start;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      transition: 0.2s;
+    }
+
+    .testimonial-card i {
+      color: #D4AF37;
+      font-size: 2rem;
+      margin-bottom: 18px;
+      opacity: 0.7;
+    }
+
+    .testimonial-card p {
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .client-name {
+      margin-top: 20px;
+      font-weight: 700;
+      color: #D4AF37;
+    }
+
+    /* contacto formulario */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 14px 18px;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 16px;
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      transition: 0.2s;
+    }
+
+    body.light-mode input,
+    body.light-mode textarea {
+      background: #f0ede8;
+      color: #1e1e1e;
+      border: 1px solid #ccc;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #D4AF37;
+    }
+
+    .btn-submit {
+      background: #D4AF37;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 25px;
+      margin-top: 25px;
+    }
+
+    .social-icon {
+      background: #1f1f1f;
+      width: 55px;
+      height: 55px;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      transition: 0.2s;
+      color: #D4AF37;
+      text-decoration: none;
+    }
+
+    .social-icon:hover {
+      background: #D4AF37;
+      color: black;
+      transform: translateY(-4px);
+    }
+
+    /* footer */
+    footer {
+      background: #050505;
+      padding: 40px 0;
+      text-align: center;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    /* botón flotante whatsapp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #25D366;
+      color: white;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      transition: 0.2s;
+      z-index: 1100;
+      text-decoration: none;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.07);
+      background: #20b859;
+    }
+
+    /* responsive */
+    @media (max-width: 900px) {
+      .container {
+        padding: 0 24px;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .nav-links {
+        gap: 1rem;
+      }
+      .navbar {
+        padding: 10px 0;
+      }
+      .logo {
+        font-size: 1.2rem;
+      }
+      .logo-img {
+        width: 38px;
+        height: 38px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .hero {
+        text-align: center;
+      }
+      .btn-group {
+        justify-content: center;
+      }
+      .hero p {
+        border-left: none;
+        padding-left: 0;
+      }
+    }
+
+    button, a {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar fijo con logo imagen LOCAL -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="logo-wrapper">
+        <img class="logo-img" src="logo.png" alt="El Cartel Logo">
+        <div class="logo">EL CARTEL</div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Modo claro/oscuro"><i class="fas fa-moon"></i> Modo</button>
+    </div>
+  </nav>
+
+  <!-- Hero sección con la misma imagen de fondo -->
+  <section id="inicio" class="hero">
+    <div class="container hero-content">
+      <h1>El Arte de Regalar.<br>El Poder de Conectar.</h1>
+      <p>Regalos corporativos que elevan tu marca. Experiencias personalizadas, packaging de lujo y el detalle exacto que genera fidelidad. Más de 200 empresas confían en nosotros.</p>
+      <div class="btn-group">
+        <a href="#productos" class="btn-primary">Ver Catálogo</a>
+        <a href="#contacto" class="btn-outline">Cotizar Ahora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre Nosotros -->
+  <section id="nosotros">
+    <div class="container">
+      <h2 class="section-title"><span>Esencia</span> & Exclusividad</h2>
+      <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+        <p style="font-size: 1.1rem; line-height: 1.6;">Somos especialistas en regalería corporativa de alto impacto. Trabajamos con marcas que entienden el valor de un detalle único: desde el grabado láser hasta el packaging con foil dorado. Cada obsequio cuenta una historia de prestigio, puntualidad y excelencia.</p>
+        <p style="margin-top: 20px; color: #D4AF37;">〄 "El lujo está en el detalle, el poder está en conectar"</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galería de Productos (6 imágenes estilo Instagram) -->
+  <section id="productos">
+    <div class="container">
+      <h2 class="section-title"><span>Colección</span> Ejecutiva</h2>
+      <div class="section-sub">Kits de lujo • Packaging personalizado • Piezas únicas</div>
+      <div class="products-grid">
+        <!-- producto 1 -->
+        <div class="product-card">
+          <div class="product-img" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://placehold.co/600x500/1a1a1a/D4AF37?text=Kit+CEO+Limited');">
+            <div class="overlay-icon"><i class="fas fa-search-plus"></i> Ver detalle</div>
+          </div>
+          <h3>Kit CEO Black Label</h3>
+          <p>Pluma premium, tarjetero en piel y botella térmica grabada con láser. Estuche de terciopelo negro.</p>
+        </div>
+        <!-- producto 2 -->
+        <div class="product-card">
+          <div class="product-img" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://placehold.co/600x500/1a1a1a/D4AF37?text=Caja+de+Regalo+Oro');">
+            <div class="overlay-icon"><i class="fas fa-tag"></i> Cotizar</div>
+          </div>
+          <h3>Estuche Esmeralda</h3>
+          <p>Caja rígida con foil dorado interior de terciopelo. Ideal para relojes o accesorios ejecutivos.</p>
+        </div>
+        <!-- producto 3 -->
+        <div class="product-card">
+          <div class="product-img" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://placehold.co/600x500/1a1a1a/D4AF37?text=Set+Whisky+Personalizado');">
+            <div class="overlay-icon"><i class="fas fa-search-plus"></i> Ver detalle</div>
+          </div>
+          <h3>Set Bar & Grabado</h3>
+          <p>Vaso de cristal de roca + piedras para whisky, con nombre de empresa grabado. Presentación en estuche madera.</p>
+        </div>
+        <!-- producto 4 -->
+        <div class="product-card">
+          <div class="product-img" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://placehold.co/600x500/1a1a1a/D4AF37?text=Powerbank+Premium');">
+            <div class="overlay-icon"><i class="fas fa-tag"></i> Cotizar</div>
+          </div>
+          <h3>Tech & Luxury</h3>
+          <p>Powerbank de aluminio cepillado, cable tipo seda y organizador de cables. Branding dorado.</p>
+        </div>
+        <!-- producto 5 -->
+        <div class="product-card">
+          <div class="product-img" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://placehold.co/600x500/1a1a1a/D4AF37?text=Caja+Curated+Desk');">
+            <div class="overlay-icon"><i class="fas fa-search-plus"></i> Ver detalle</div>
+          </div>
+          <h3>Desk Executive Box</h3>
+          <p>Organizador minimalista, libreta italiana y bolígrafo de carbono. Packaging con relieve.</p>
+        </div>
+        <!-- producto 6 -->
+        <div class="product-card">
+          <div class="product-img" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://placehold.co/600x500/1a1a1a/D4AF37?text=Botella+Thermo+Gold');">
+            <div class="overlay-icon"><i class="fas fa-tag"></i> Cotizar</div>
+          </div>
+          <h3>Hydro Gold Edition</h3>
+          <p>Botella térmica 500ml, acabado mate negro + detalles dorados. Personalización máxima.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios">
+    <div class="container">
+      <h2 class="section-title"><span>Servicios</span> Corporativos</h2>
+      <div class="services-grid">
+        <div class="service-card"><i class="fas fa-engraving"></i><h4>Grabado Láser</h4><p>Logos, frases o iniciales sobre metal, vidrio, madera y cuero.</p></div>
+        <div class="service-card"><i class="fas fa-box-open"></i><h4>Branding Packaging</h4><p>Cajas personalizadas, papel tissue con logo, foil y acabados de lujo.</p></div>
+        <div class="service-card"><i class="fas fa-truck-fast"></i><h4>Entrega Express</h4><p>Logística puerta a puerta para toda la república, seguimiento en tiempo real.</p></div>
+        <div class="service-card"><i class="fas fa-chalkboard-user"></i><h4>Asesoría Personalizada</h4><p>Consultoría creativa para campañas de fidelización y eventos exclusivos.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonios Carrusel (scroll horizontal moderno) -->
+  <section id="testimonios">
+    <div class="container">
+      <h2 class="section-title"><span>Voces</span> de Confianza</h2>
+      <div class="section-sub">Lo que dicen los líderes empresariales</div>
+      <div class="testimonials-wrapper">
+        <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"El impacto visual y la calidad superaron expectativas. Nuestros clientes destacaron el packaging dorado. Puntualidad impecable."</p><div class="client-name">— Marcela G. · Directora RRHH Fintech</div></div>
+        <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"Efecto sorpresa total. Cada kit es una experiencia de unboxing que refuerza nuestra marca. El Cartel es nuestro aliado estratégico."</p><div class="client-name">— Rodrigo M. · Gerente Comercial</div></div>
+        <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"Entregaron más de 500 regalos en tiempo récord con una calidad increíble. El equipo de asesoría es top. 100% recomendados."</p><div class="client-name">— Valentina L. · Eventos Corporativos</div></div>
+        <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"La personalización con grabado láser y el trato premium nos fidelizaron. Sin duda el mejor proveedor de regalos empresariales."</p><div class="client-name">— Sebastián A. · CEO Grupo Inmobiliario</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto + formulario + redes -->
+  <section id="contacto">
+    <div class="container">
+      <h2 class="section-title"><span>Conecta</span> con Nosotros</h2>
+      <div class="contact-grid">
+        <div>
+          <!-- FORMULARIO FUNCIONAL - Envía los datos a elcartelmdq03@gmail.com -->
+          <form id="contactForm" action="https://formsubmit.co/elcartelmdq03@gmail.com" method="POST">
+            <!-- Oculta el captcha de FormSubmit y redirección amigable -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="#">
+            <input type="hidden" name="_subject" value="Nueva consulta desde la web - El Cartel Regalos">
+            
+            <div class="form-group"><input type="text" name="nombre" placeholder="Nombre completo" required></div>
+            <div class="form-group"><input type="text" name="empresa" placeholder="Empresa / Cargo" required></div>
+            <div class="form-group"><input type="email" name="email" placeholder="Correo electrónico" required></div>
+            <div class="form-group"><textarea rows="4" name="mensaje" placeholder="Cuéntanos sobre tu proyecto o cantidad de regalos..."></textarea></div>
+            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Solicitar cotización</button>
+          </form>
+          <div id="formFeedback" style="margin-top: 15px; font-size: 0.85rem; color: #D4AF37;"></div>
+        </div>
+        <div>
+          <h3 style="font-family: 'Playfair Display';">Regala con estilo</h3>
+          <p style="margin: 15px 0;">Contáctanos vía Instagram o WhatsApp para recibir atención VIP y un catálogo digital exclusivo.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/elcartel_regalosempresarios/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/5491123456789?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20me%20interesar%C3%ADa%20cotizar%20regalos%20empresariales." target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+            <!-- Email actualizado -->
+            <a href="mailto:elcartelmdq03@gmail.com" class="social-icon"><i class="far fa-envelope"></i></a>
+          </div>
+          <div style="margin-top: 40px; background: rgba(212,175,55,0.1); padding: 20px; border-radius: 28px;">
+            <p><i class="fas fa-map-marker-alt" style="color:#D4AF37;"></i> Showroom privado - Citas exclusivas</p>
+            <p><i class="fas fa-clock"></i> Lunes a Viernes 10am a 7pm</p>
+            <p><i class="fas fa-envelope" style="color:#D4AF37;"></i> elcartelmdq03@gmail.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="logo" style="font-size: 1.3rem; margin-bottom: 15px;">EL CARTEL REGALOS EMPRESARIOS</div>
+      <p>Detalles que inspiran lealtad · Regalos corporativos de alto impacto</p>
+      <p style="margin-top: 12px; font-size: 0.75rem;">© 2025 El Cartel – Transformando relaciones a través del lujo funcional</p>
+    </div>
+  </footer>
+
+  <!-- Botón flotante WhatsApp -->
+  <a href="https://wa.me/5491123456789?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20me%20interesar%C3%ADa%20cotizar%20regalos%20empresariales." class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // Smooth scroll para enlaces internos
+    document.querySelectorAll('.nav-links a, .btn-primary, .btn-outline').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          const targetId = href.substring(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+
+    // Modo oscuro / claro con persistencia
+    const themeToggle = document.getElementById('themeToggle');
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    if (currentTheme === 'light') {
+      document.body.classList.add('light-mode');
+      themeToggle.innerHTML = '<i class="fas fa-sun"></i> Modo';
+    } else {
+      themeToggle.innerHTML = '<i class="fas fa-moon"></i> Modo';
+    }
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      if (document.body.classList.contains('light-mode')) {
+        localStorage.setItem('theme', 'light');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i> Modo';
+      } else {
+        localStorage.setItem('theme', 'dark');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i> Modo';
+      }
+    });
+
+    // Feedback visual al enviar el formulario (sin bloquear el envío real)
+    const contactForm = document.getElementById('contactForm');
+    const feedbackDiv = document.getElementById('formFeedback');
+    
+    contactForm.addEventListener('submit', function(e) {
+      // No prevenimos el envío porque ahora es real con FormSubmit
+      // Solo mostramos un mensaje de "enviando" para mejor experiencia
+      feedbackDiv.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Enviando consulta...';
+      feedbackDiv.style.color = "#D4AF37";
+      
+      // El formulario se envía automáticamente a FormSubmit y de allí a tu correo
+      // El mensaje de éxito lo dará la página de redirección, pero mostramos uno amigable
+      setTimeout(() => {
+        feedbackDiv.innerHTML = '<i class="fas fa-check-circle"></i> ¡Mensaje enviado! Te contactaremos a la brevedad.';
+      }, 1500);
+      
+      // El formulario se envía realmente, no se cancela
+    });
+  </script>
+</body>
+</html>
