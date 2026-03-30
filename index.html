@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>El Cartel | Regalos Empresarios de Alto Impacto</title>
+  <title>El Cartel | Gráfica Integral y Regalos Empresariales</title>
   <!-- Google Fonts + Font Awesome -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -49,7 +49,6 @@
       padding: 0 32px;
     }
 
-    /* NAVBAR */
     .navbar {
       position: fixed;
       top: 0;
@@ -126,17 +125,31 @@
       font-size: 1.1rem;
     }
 
-    /* HERO */
+    /* HERO - fondo oscuro elegante sin imagen */
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(0,0,0,0.7)), url('https://instagram.fmdq3-1.fna.fbcdn.net/v/t51.2885-19/272833501_4922373631172428_7866195570883131568_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xNTAuYzIifQ&_nc_ht=instagram.fmdq3-1.fna.fbcdn.net&_nc_cat=104&_nc_oc=Q6cZ2gEze1d11l8iPcZAwPfi7-CcNRGAA_7nJwJNOr_1tE25RJg3SYPXogq--UakKoC5k_1hcFP-02tJjyiD1R4mJglp&_nc_ohc=VAT1Qwf6l9sQ7kNvwFgSInE&_nc_gid=1v4p8JVumDDDay_35RBg2g&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_AfxeWaH6E5uXtp_I2XIpXb7jsSUysQoDhzPm8r6VL_QaSQ&oe=69CC52D7&_nc_sid=7a9f4b') center/cover no-repeat;
-      background-blend-mode: overlay;
+      background: radial-gradient(circle at 30% 20%, #1a1a1a, #030303);
+      position: relative;
+    }
+
+    /* efecto de textura sutil opcional */
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(45deg, rgba(212,175,55,0.02) 0px, rgba(212,175,55,0.02) 2px, transparent 2px, transparent 8px);
+      pointer-events: none;
     }
 
     .hero-content {
       max-width: 700px;
+      position: relative;
+      z-index: 1;
     }
 
     .hero h1 {
@@ -226,7 +239,6 @@
       color: #aaa;
     }
 
-    /* Productos */
     .products-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -269,6 +281,7 @@
       color: #D4AF37;
       border: 1px solid #D4AF37;
       backdrop-filter: blur(4px);
+      pointer-events: none;
     }
 
     .product-card h3 {
@@ -282,10 +295,9 @@
       font-size: 0.85rem;
     }
 
-    /* Servicios */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
     }
 
@@ -295,6 +307,11 @@
       text-align: center;
       border-radius: 24px;
       border-bottom: 2px solid #D4AF37;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
     }
 
     .service-card i {
@@ -308,7 +325,11 @@
       margin-bottom: 12px;
     }
 
-    /* Testimonios */
+    .service-card p {
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
     .testimonials-wrapper {
       overflow-x: auto;
       scroll-snap-type: x mandatory;
@@ -350,7 +371,6 @@
       color: #D4AF37;
     }
 
-    /* Contacto */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -452,53 +472,25 @@
     }
 
     @media (max-width: 900px) {
-      .container {
-        padding: 0 24px;
-      }
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-      .nav-links {
-        gap: 1rem;
-      }
-      .logo {
-        font-size: 1.2rem;
-      }
-      .logo-img {
-        width: 38px;
-        height: 38px;
-      }
+      .container { padding: 0 24px; }
+      .hero h1 { font-size: 2.5rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 30px; }
+      .nav-links { gap: 1rem; }
+      .logo { font-size: 1.2rem; }
+      .logo-img { width: 38px; height: 38px; }
     }
 
     @media (max-width: 650px) {
-      .nav-container {
-        flex-direction: column;
-        gap: 10px;
-      }
-      .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .hero {
-        text-align: center;
-      }
-      .btn-group {
-        justify-content: center;
-      }
-      .hero p {
-        border-left: none;
-        padding-left: 0;
-      }
+      .nav-container { flex-direction: column; gap: 10px; }
+      .nav-links { flex-wrap: wrap; justify-content: center; }
+      .hero { text-align: center; }
+      .btn-group { justify-content: center; }
+      .hero p { border-left: none; padding-left: 0; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="container nav-container">
       <div class="logo-wrapper">
@@ -516,90 +508,103 @@
     </div>
   </nav>
 
-  <!-- HERO -->
   <section id="inicio" class="hero">
     <div class="container hero-content">
-      <h1>El Arte de Regalar.<br>El Poder de Conectar.</h1>
-      <p>Regalos corporativos que elevan tu marca. Experiencias personalizadas, packaging de lujo y el detalle exacto que genera fidelidad. Más de 200 empresas confían en nosotros.</p>
+      <h1>Comunicación Visual<br>Que Impulsa Tu Marca</h1>
+      <p>Ploteo vehicular • Gráfica comercial • Regalos empresariales • Stands • Letras corpóreas • Offset digital. Soluciones integrales para hacer visible tu negocio.</p>
       <div class="btn-group">
-        <a href="#productos" class="btn-primary">Ver Catálogo</a>
+        <a href="#productos" class="btn-primary">Ver Servicios</a>
         <a href="#contacto" class="btn-outline">Cotizar Ahora</a>
       </div>
     </div>
   </section>
 
-  <!-- NOSOTROS -->
   <section id="nosotros">
     <div class="container">
       <h2 class="section-title"><span>Esencia</span> & Exclusividad</h2>
       <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-        <p style="font-size: 1.1rem; line-height: 1.6;">Somos especialistas en regalería corporativa de alto impacto. Trabajamos con marcas que entienden el valor de un detalle único: desde el grabado láser hasta el packaging con foil dorado. Cada obsequio cuenta una historia de prestigio, puntualidad y excelencia.</p>
-        <p style="margin-top: 20px; color: #D4AF37;">〄 "El lujo está en el detalle, el poder está en conectar"</p>
+        <p style="font-size: 1.1rem; line-height: 1.6;">Somos especialistas en comunicación visual integral. Desde gráfica vehicular y comercial hasta regalos empresariales de alto impacto. Transformamos ideas en experiencias visuales que conectan con tu audiencia.</p>
+        <p style="margin-top: 20px; color: #D4AF37;">〄 "El arte de comunicar, el poder de conectar"</p>
       </div>
     </div>
   </section>
 
-  <!-- PRODUCTOS -->
+  <!-- PRODUCTOS / SOLUCIONES con tus imágenes -->
   <section id="productos">
     <div class="container">
-      <h2 class="section-title"><span>Colección</span> Ejecutiva</h2>
-      <div class="section-sub">Kits de lujo • Packaging personalizado • Piezas únicas</div>
+      <h2 class="section-title"><span>Soluciones</span> Gráficas Integrales</h2>
+      <div class="section-sub">Ploteo vehicular • Gráfica comercial • Regalos empresariales • Stands • Letras corpóreas</div>
       <div class="products-grid">
+        
+        <!-- Ploteo Vehicular -->
         <div class="product-card">
-          <div class="product-img" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://placehold.co/600x500/1a1a1a/D4AF37?text=Kit+CEO+Limited');">
+          <div class="product-img" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('vehiculo.png');">
             <div class="overlay-icon"><i class="fas fa-search-plus"></i> Ver detalle</div>
           </div>
-          <h3>Kit CEO Black Label</h3>
-          <p>Pluma premium, tarjetero en piel y botella térmica grabada con láser. Estuche de terciopelo negro.</p>
+          <h3>Ploteo Vehicular</h3>
+          <p>Vinilizado full o parcial para flotas, autos, camionetas. Publicidad móvil de alto impacto que recorre la ciudad.</p>
         </div>
+
+        <!-- Gráfica Comercial - Ahora usa tienda.png -->
         <div class="product-card">
-          <div class="product-img" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://placehold.co/600x500/1a1a1a/D4AF37?text=Caja+de+Regalo+Oro');">
-            <div class="overlay-icon"><i class="fas fa-tag"></i> Cotizar</div>
-          </div>
-          <h3>Estuche Esmeralda</h3>
-          <p>Caja rígida con foil dorado interior de terciopelo. Ideal para relojes o accesorios ejecutivos.</p>
-        </div>
-        <div class="product-card">
-          <div class="product-img" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://placehold.co/600x500/1a1a1a/D4AF37?text=Set+Whisky+Personalizado');">
+          <div class="product-img" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('tienda.png');">
             <div class="overlay-icon"><i class="fas fa-search-plus"></i> Ver detalle</div>
           </div>
-          <h3>Set Bar & Grabado</h3>
-          <p>Vaso de cristal de roca + piedras para whisky, con nombre de empresa grabado. Presentación en estuche madera.</p>
+          <h3>Gráfica Comercial</h3>
+          <p>Fachadas, vidrieras, marquesinas, banners. Transformamos tu local en un imán visual para tus clientes.</p>
         </div>
+
+        <!-- Regalos Empresariales -->
         <div class="product-card">
-          <div class="product-img" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://placehold.co/600x500/1a1a1a/D4AF37?text=Powerbank+Premium');">
+          <div class="product-img" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('cartel.png');">
             <div class="overlay-icon"><i class="fas fa-tag"></i> Cotizar</div>
           </div>
-          <h3>Tech & Luxury</h3>
-          <p>Powerbank de aluminio cepillado, cable tipo seda y organizador de cables. Branding dorado.</p>
+          <h3>Regalos Empresariales</h3>
+          <p>Kits personalizados, branding en productos, packaging de lujo. El detalle que fortalece tu marca.</p>
         </div>
+
+        <!-- Sticker y Offset Digital -->
         <div class="product-card">
-          <div class="product-img" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://placehold.co/600x500/1a1a1a/D4AF37?text=Caja+Curated+Desk');">
+          <div class="product-img" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('stickeryOffset.png');">
             <div class="overlay-icon"><i class="fas fa-search-plus"></i> Ver detalle</div>
           </div>
-          <h3>Desk Executive Box</h3>
-          <p>Organizador minimalista, libreta italiana y bolígrafo de carbono. Packaging con relieve.</p>
+          <h3>Sticker y Offset Digital</h3>
+          <p>Stickers adhesivos, folletos, tarjetas personales, papelería corporativa. Alta calidad en pequeño y gran formato.</p>
         </div>
+
+        <!-- Stands y Eventos -->
         <div class="product-card">
-          <div class="product-img" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://placehold.co/600x500/1a1a1a/D4AF37?text=Botella+Thermo+Gold');">
+          <div class="product-img" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('stands%20y%20ventos.png');">
             <div class="overlay-icon"><i class="fas fa-tag"></i> Cotizar</div>
           </div>
-          <h3>Hydro Gold Edition</h3>
-          <p>Botella térmica 500ml, acabado mate negro + detalles dorados. Personalización máxima.</p>
+          <h3>Stands y Eventos</h3>
+          <p>Stands modulares, expositores, señalética para ferias y eventos corporativos. Destacá en cada exposición.</p>
         </div>
+
+        <!-- Letras Corpóreas y LED -->
+        <div class="product-card">
+          <div class="product-img" style="background-image: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('letrascorporeas.png');">
+            <div class="overlay-icon"><i class="fas fa-search-plus"></i> Ver detalle</div>
+          </div>
+          <h3>Letras Corpóreas y LED</h3>
+          <p>Letras 3D, iluminación interior/exterior, cartelería luminosa. Presencia y jerarquía las 24 horas.</p>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- SERVICIOS -->
+  <!-- SERVICIOS DESTACADOS -->
   <section id="servicios">
     <div class="container">
-      <h2 class="section-title"><span>Servicios</span> Corporativos</h2>
+      <h2 class="section-title"><span>Nuestros</span> Servicios</h2>
       <div class="services-grid">
-        <div class="service-card"><i class="fas fa-engraving"></i><h4>Grabado Láser</h4><p>Logos, frases o iniciales sobre metal, vidrio, madera y cuero.</p></div>
-        <div class="service-card"><i class="fas fa-box-open"></i><h4>Branding Packaging</h4><p>Cajas personalizadas, papel tissue con logo, foil y acabados de lujo.</p></div>
-        <div class="service-card"><i class="fas fa-truck-fast"></i><h4>Entrega Express</h4><p>Logística puerta a puerta para toda la república, seguimiento en tiempo real.</p></div>
-        <div class="service-card"><i class="fas fa-chalkboard-user"></i><h4>Asesoría Personalizada</h4><p>Consultoría creativa para campañas de fidelización y eventos exclusivos.</p></div>
+        <div class="service-card"><i class="fas fa-car"></i><h4>Ploteo Vehicular</h4><p>Vinilizado comercial, flotas, autos, camionetas. Publicidad móvil de alto impacto.</p></div>
+        <div class="service-card"><i class="fas fa-store"></i><h4>Gráfica Comercial</h4><p>Fachadas, vidrieras, marquesinas, banners. Identidad visual que vende.</p></div>
+        <div class="service-card"><i class="fas fa-gift"></i><h4>Regalos Empresariales</h4><p>Kits personalizados, branding en productos, packaging de lujo para empresas.</p></div>
+        <div class="service-card"><i class="fas fa-print"></i><h4>Offset Digital</h4><p>Folletos, tarjetas, papelería. Impresión de alta calidad en pequeños y grandes volúmenes.</p></div>
+        <div class="service-card"><i class="fas fa-cube"></i><h4>Stands y Eventos</h4><p>Stands modulares, expositores, señalética para ferias y eventos corporativos.</p></div>
+        <div class="service-card"><i class="fas fa-lightbulb"></i><h4>Letras Corpóreas y LED</h4><p>Letras 3D, cartelería luminosa, iluminación interior y exterior.</p></div>
       </div>
     </div>
   </section>
@@ -608,58 +613,45 @@
   <section id="testimonios">
     <div class="container">
       <h2 class="section-title"><span>Voces</span> de Confianza</h2>
-      <div class="section-sub">Lo que dicen los líderes empresariales</div>
+      <div class="section-sub">Lo que dicen nuestros clientes</div>
       <div class="testimonials-wrapper">
-        <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"El impacto visual y la calidad superaron expectativas. Nuestros clientes destacaron el packaging dorado. Puntualidad impecable."</p><div class="client-name">— Marcela G. · Directora RRHH Fintech</div></div>
-        <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"Efecto sorpresa total. Cada kit es una experiencia de unboxing que refuerza nuestra marca. El Cartel es nuestro aliado estratégico."</p><div class="client-name">— Rodrigo M. · Gerente Comercial</div></div>
-        <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"Entregaron más de 500 regalos en tiempo récord con una calidad increíble. El equipo de asesoría es top. 100% recomendados."</p><div class="client-name">— Valentina L. · Eventos Corporativos</div></div>
-        <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"La personalización con grabado láser y el trato premium nos fidelizaron. Sin duda el mejor proveedor de regalos empresariales."</p><div class="client-name">— Sebastián A. · CEO Grupo Inmobiliario</div></div>
+        <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"El ploteo de nuestra flota quedó impecable. Muy profesionales y excelente terminación. Sin dudas los recomiendo."</p><div class="client-name">— Empresa de Logística</div></div>
+        <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"Los regalos empresariales que nos hicieron fueron un éxito. Packaging de lujo y personalización perfecta."</p><div class="client-name">— Gerente de Marketing</div></div>
+        <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"El stand para la feria superó nuestras expectativas. Diseño innovador y montaje en tiempo récord."</p><div class="client-name">— Director Comercial</div></div>
+        <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"Las letras corpóreas con LED transformaron la fachada de nuestro local. Ahora somos imán de clientes."</p><div class="client-name">— Propietario Local Comercial</div></div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACTO - FORMULARIO CON FORMSUBMIT (FUNCIONA EN GITHUB PAGES) -->
+  <!-- CONTACTO -->
   <section id="contacto">
     <div class="container">
       <h2 class="section-title"><span>Conecta</span> con Nosotros</h2>
       <div class="contact-grid">
         <div>
-          <!-- Formulario con FormSubmit - los mensajes llegan a elcartelmdq03@gmail.com -->
           <form action="https://formsubmit.co/elcartelmdq03@gmail.com" method="POST">
-            <!-- Configuración de FormSubmit -->
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_next" value="https://jerevz.github.io/elcartel-regalos/">
-            <input type="hidden" name="_subject" value="Nueva consulta - El Cartel Regalos">
-            
-            <div class="form-group">
-              <input type="text" name="nombre" placeholder="Nombre completo" required>
-            </div>
-            <div class="form-group">
-              <input type="text" name="empresa" placeholder="Empresa / Cargo" required>
-            </div>
-            <div class="form-group">
-              <input type="email" name="email" placeholder="Correo electrónico" required>
-            </div>
-            <div class="form-group">
-              <textarea rows="4" name="mensaje" placeholder="Cuéntanos sobre tu proyecto o cantidad de regalos..."></textarea>
-            </div>
-            <button type="submit" class="btn-submit">
-              <i class="fas fa-paper-plane"></i> Solicitar cotización
-            </button>
+            <input type="hidden" name="_subject" value="Nueva consulta - El Cartel">
+            <div class="form-group"><input type="text" name="nombre" placeholder="Nombre completo" required></div>
+            <div class="form-group"><input type="text" name="empresa" placeholder="Empresa / Cargo" required></div>
+            <div class="form-group"><input type="email" name="email" placeholder="Correo electrónico" required></div>
+            <div class="form-group"><textarea rows="4" name="mensaje" placeholder="Contanos qué servicio necesitas..."></textarea></div>
+            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Solicitar cotización</button>
           </form>
           <div id="formFeedback" style="margin-top: 15px; font-size: 0.85rem; color: #D4AF37;"></div>
         </div>
         <div>
-          <h3 style="font-family: 'Playfair Display';">Regala con estilo</h3>
-          <p style="margin: 15px 0;">Contáctanos vía Instagram o WhatsApp para recibir atención VIP y un catálogo digital exclusivo.</p>
+          <h3 style="font-family: 'Playfair Display';">Comunica tu marca</h3>
+          <p style="margin: 15px 0;">Contactanos vía Instagram o WhatsApp para recibir atención personalizada y un presupuesto sin compromiso.</p>
           <div class="social-links">
             <a href="https://www.instagram.com/elcartel_regalosempresarios/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/5491123456789?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20me%20interesar%C3%ADa%20cotizar%20regalos%20empresariales." target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://wa.me/5491123456789?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20me%20interesar%C3%ADa%20cotizar%20un%20trabajo." target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
             <a href="mailto:elcartelmdq03@gmail.com" class="social-icon"><i class="far fa-envelope"></i></a>
           </div>
           <div style="margin-top: 40px; background: rgba(212,175,55,0.1); padding: 20px; border-radius: 28px;">
-            <p><i class="fas fa-map-marker-alt" style="color:#D4AF37;"></i> Showroom privado - Citas exclusivas</p>
-            <p><i class="fas fa-clock"></i> Lunes a Viernes 10am a 7pm</p>
+            <p><i class="fas fa-map-marker-alt" style="color:#D4AF37;"></i> Mar del Plata, Argentina</p>
+            <p><i class="fas fa-clock"></i> Lunes a Viernes 9am a 7pm</p>
             <p><i class="fas fa-envelope" style="color:#D4AF37;"></i> elcartelmdq03@gmail.com</p>
           </div>
         </div>
@@ -669,18 +661,15 @@
 
   <footer>
     <div class="container">
-      <div class="logo" style="font-size: 1.3rem; margin-bottom: 15px;">EL CARTEL REGALOS EMPRESARIOS</div>
-      <p>Detalles que inspiran lealtad · Regalos corporativos de alto impacto</p>
-      <p style="margin-top: 12px; font-size: 0.75rem;">© 2025 El Cartel – Transformando relaciones a través del lujo funcional</p>
+      <div class="logo" style="font-size: 1.3rem; margin-bottom: 15px;">EL CARTEL</div>
+      <p>Comunicación visual integral • Gráfica vehicular • Regalos empresariales • Stands • Letras corpóreas</p>
+      <p style="margin-top: 12px; font-size: 0.75rem;">© 2025 El Cartel – Transformando marcas a través del diseño y la comunicación visual</p>
     </div>
   </footer>
 
-  <a href="https://wa.me/5491123456789?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20me%20interesar%C3%ADa%20cotizar%20regalos%20empresariales." class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-  </a>
+  <a href="https://wa.me/5491123456789?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20me%20interesar%C3%ADa%20cotizar%20un%20trabajo." class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
   <script>
-    // Smooth scroll
     document.querySelectorAll('.nav-links a, .btn-primary, .btn-outline').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
@@ -688,41 +677,19 @@
           e.preventDefault();
           const targetId = href.substring(1);
           const targetElement = document.getElementById(targetId);
-          if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
+          if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
     });
 
-    // Modo oscuro/claro
     const themeToggle = document.getElementById('themeToggle');
     const currentTheme = localStorage.getItem('theme') || 'dark';
-    if (currentTheme === 'light') {
-      document.body.classList.add('light-mode');
-      themeToggle.innerHTML = '<i class="fas fa-sun"></i> Modo';
-    }
+    if (currentTheme === 'light') { document.body.classList.add('light-mode'); themeToggle.innerHTML = '<i class="fas fa-sun"></i> Modo'; }
     themeToggle.addEventListener('click', () => {
       document.body.classList.toggle('light-mode');
-      if (document.body.classList.contains('light-mode')) {
-        localStorage.setItem('theme', 'light');
-        themeToggle.innerHTML = '<i class="fas fa-sun"></i> Modo';
-      } else {
-        localStorage.setItem('theme', 'dark');
-        themeToggle.innerHTML = '<i class="fas fa-moon"></i> Modo';
-      }
+      if (document.body.classList.contains('light-mode')) { localStorage.setItem('theme', 'light'); themeToggle.innerHTML = '<i class="fas fa-sun"></i> Modo'; }
+      else { localStorage.setItem('theme', 'dark'); themeToggle.innerHTML = '<i class="fas fa-moon"></i> Modo'; }
     });
-
-    // Feedback visual al enviar el formulario
-    const form = document.querySelector('form');
-    const feedbackDiv = document.getElementById('formFeedback');
-    
-    if (form) {
-      form.addEventListener('submit', function(e) {
-        feedbackDiv.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Enviando consulta...';
-        feedbackDiv.style.color = "#D4AF37";
-      });
-    }
   </script>
 </body>
 </html>
